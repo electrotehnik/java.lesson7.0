@@ -9,6 +9,8 @@ public class Caller implements Runnable {
         t = new Thread(this);
     }
     public void run() {
-        target.call(msg);
+        synchronized(target) {
+            target.call(msg);
+        }
     }
 }
